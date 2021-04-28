@@ -40,7 +40,7 @@ class CreateBook extends Component {
     };
 
     axios
-      .post('http://localhost:8082/api/books', data)
+      .post('http://localhost:8082/api/articles', data)
       .then(res => {
         this.setState({
           author: '',
@@ -72,7 +72,7 @@ class CreateBook extends Component {
               </Link>
             </div>
             <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Add Book</h1>
+              <h1 className="display-4 text-center">Add Article</h1>
               <p className="lead text-center">
                   Create new book
               </p>
