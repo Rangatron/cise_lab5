@@ -6,16 +6,18 @@ import BookCard from './BookCard';
 import { DataGrid } from '@material-ui/data-grid';
 
 const columns = [
+    {field: '_id', headerName: 'ID'},
     {field: 'Author', headerName: 'Author'},
-    {field: 'Title', headername: 'Title'},
-    {field: 'Journal', headerNamer: 'Journal'},
-    {field: 'Year', headerNamer: 'Year'},
-    {field: 'Eprint', headerNamer: 'Eprint'},
-    {field: 'EprintType', headerNamer: 'EprintType'},
-    {field: 'EprintClass', headerNamer: 'EprintClass'},
-    {field: 'Pages', headerNamer: 'Pages'},
-    {field: 'Month', headerNamer: 'Month'},
-    {field: 'Annote', headerNamer: 'Annote'},
+    {field: 'Title', headerName: 'Title'},
+    {field: 'Journal', headerName: 'Journal'},
+    {field: 'Year', headerName: 'Year'},
+    {field: 'Eprint', headerName: 'Eprint'},
+    {field: 'EprintType', headerName: 'EprintType'},
+    {field: 'EprintClass', headerName: 'EprintClass'},
+    {field: 'Pages', headerName: 'Pages'},
+    {field: 'Month', headerName: 'Month'},
+    {field: 'Annote', headerName: 'Annote'},
+    {field: '__v', headerName: 'Version'},
 
 ];
 
@@ -49,7 +51,7 @@ class ShowBookList extends Component {
     console.log("PrintBook: " + articles);
     let bookList;
 
-    if(!books) {
+    if(!articles) {
       bookList = "there is no book record!";
     } /*else {
       bookList = books.map((book, k) =>
@@ -77,9 +79,9 @@ class ShowBookList extends Component {
 
           </div>
 
-          <div className="list">
-          <DataGrid rows={this.state.articles} columns={columns} pageSize={5} checkboxSelection />
-          </div>
+          <div style={{ height: 400, width: '100%' }}>
+         <DataGrid rows={this.state.articles} getRowId={(row) => row._id} columns={columns} pageSize={5} checkboxSelection />
+         </div>
         </div>
       </div>
     );
