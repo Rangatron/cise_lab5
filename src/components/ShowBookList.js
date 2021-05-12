@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState,Component } from 'react';
 import '../App.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -6,19 +6,16 @@ import BookCard from './BookCard';
 import { DataGrid } from '@material-ui/data-grid';
 
 const columns = [
-    {field: '_id', headerName: 'ID'},
-    {field: 'Author', headerName: 'Author'},
-    {field: 'Title', headerName: 'Title'},
-    {field: 'Journal', headerName: 'Journal'},
-    {field: 'Year', headerName: 'Year'},
-    {field: 'Eprint', headerName: 'Eprint'},
-    {field: 'EprintType', headerName: 'EprintType'},
-    {field: 'EprintClass', headerName: 'EprintClass'},
-    {field: 'Pages', headerName: 'Pages'},
-    {field: 'Month', headerName: 'Month'},
-    {field: 'Annote', headerName: 'Annote'},
-    {field: '__v', headerName: 'Version'},
-
+    {field: 'author', headerName: 'Author', width: 200},
+    {field: 'title', headerName: 'Title' , width: 250},
+    {field: 'journal', headerName: 'Journal', width: 150},
+    {field: 'year', headerName: 'Year'},
+    {field: 'eprint', headerName: 'Eprint'},
+    {field: 'eprintType', headerName: 'EprintType'},
+    {field: 'eprintClass', headerName: 'EprintClass'},
+    {field: 'pages', headerName: 'Pages'},
+    {field: 'month', headerName: 'Month'},
+    {field: 'annote', headerName: 'Annote'},
 ];
 
 
@@ -27,17 +24,20 @@ class ShowBookList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      articles: []
+      articles: [],
+      rows: []
     };
-  }
   
+
+  }
+   
   
   componentDidMount() {
     axios
       .get('http://localhost:8082/api/articles')
       .then(res => {
         this.setState({
-          articles: res.data
+          articles: res.data,
         })
       })
       .catch(err =>{
@@ -80,7 +80,7 @@ class ShowBookList extends Component {
           </div>
 
           <div style={{ height: 400, width: '100%' }}>
-         <DataGrid rows={this.state.articles} getRowId={(row) => row._id} columns={columns} pageSize={5} checkboxSelection />
+         <DataGrid rows={this.state.articles} getRowId={(row) => row._id} columns={columns} pageSize={10}/>
          </div>
         </div>
       </div>
