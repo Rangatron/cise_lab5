@@ -14,6 +14,7 @@ class CreateBook extends Component {
       year:'',
       eprint:'',
       eprinttype:'',
+      eprintclass:'',
       pages:'',
       month:'',
       annote:''
@@ -32,6 +33,7 @@ class CreateBook extends Component {
       title: this.state.title,
       journal: this.state.journal,
       year: this.state.year,
+      eprint: this.state.eprint,
       eprinttype: this.state.eprint,
       eprintclass: this.state.publisher,
       pages: this.state.pages,
@@ -49,6 +51,7 @@ class CreateBook extends Component {
           year:'',
           eprint:'',
           eprinttype:'',
+          eprintclass:'',
           pages:'',
           month:'',
           annote:''
